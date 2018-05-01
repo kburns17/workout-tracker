@@ -16,7 +16,6 @@ class NewExercise extends Component {
         }
 
     handleNameChange = (event) => {  
-        console.log(this.state);
         this.setState({
             exercise: event.target.value
         })
