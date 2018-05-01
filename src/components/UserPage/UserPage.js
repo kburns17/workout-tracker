@@ -52,6 +52,7 @@ class UserPage extends Component {
         <Nav />
         { content }
       </div>
+      
     );
   }
 }

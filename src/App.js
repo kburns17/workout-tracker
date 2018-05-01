@@ -11,12 +11,14 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+import AddWorkout from './components/AddWorkout/AddWorkout';
+import PastWorkouts from './components/PastWorkouts/PastWorkouts';
 
 import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="Workout Tracker" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -36,9 +38,17 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        <Route
+          path="/display"
+          component={PastWorkouts}
+        />
+        <Route
+         path="/add"
+         component={AddWorkout}
+       />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
-
+        {/* {Routes for new pages built by kerry} */}
       </Switch>
     </Router>
   </div>

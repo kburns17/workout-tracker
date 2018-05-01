@@ -15,6 +15,16 @@ const Nav = () => (
             Info Page
           </Link>
         </li>
+        <li>
+          <Link to="/add">
+            Add New Workout
+          </Link>
+        </li>
+        <li>
+          <Link to="/display">
+            See Past Workouts
+          </Link>
+        </li>
       </ul>
     </div>
   </div>
