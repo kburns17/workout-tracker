@@ -5,7 +5,6 @@ import axios from 'axios';
 function*  workoutSaga() {
     yield takeEvery('FETCH_WORKOUTS', getWorkoutsSaga);
     yield takeEvery('ADD_WORKOUT', addWorkoutSaga);
-   
 }
 
 function* getWorkoutsSaga(action) {
