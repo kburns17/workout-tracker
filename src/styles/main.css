@@ -8,9 +8,9 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: #5066e291;
     padding: 5px;
-    color: #ece7e7;
+    color: #110f0f;
 }
 
 form {
@@ -48,9 +48,10 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  background-color: #5066e291;
   width: 100%;
   border-radius: 0px;
+  
 }
 
 ul {
@@ -66,7 +67,7 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: #110f0f;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

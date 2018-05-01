@@ -11,7 +11,6 @@ class AddWorkout extends Component {
         constructor(props){
             super(props)
             this.state={
-                exercise: '',
                 weight: '',
                 sets: '',
                 reps: '',
@@ -21,8 +20,8 @@ class AddWorkout extends Component {
         }
 
     handleNameChange = (propertyName) => {
-        console.log('change');
             return (event) => {
+                console.log('change in input', event);
                 this.setState({
                     ...this.state,
                     [propertyName] : event.target.value,
@@ -45,12 +44,13 @@ class AddWorkout extends Component {
                 <Nav />
                 <h2>Add New Workout</h2>
                 <form onSubmit={this.addWorkout}>
-                    <input type="text" placeholder="Exercise Type" onChange={this.handleNameChange('Exercise Type')}></input>
-                    <input type="text" placeholder="Description" onChange={this.handleNameChange('Description')}></input>
-                    <input type="number" placeholder="Sets" onChange={this.handleNameChange('Sets')}></input>
-                    <input type="number" placeholder="Reps" onChange={this.handleNameChange('Reps')}></input>
-                    <input type="text" placeholder="Length" onChange={this.handleNameChange('Length')}></input>
-                    <input type="text" placeholder="Details" onChange={this.handleNameChange('Details')}></input>
+                    <select><option value="">--Exercise Type--</option></select>
+                    <br></br>
+                    <input type="text" placeholder="Weight" onChange={this.handleNameChange('weight')}></input>
+                    <input type="number" placeholder="Sets" onChange={this.handleNameChange('sets')}></input>
+                    <input type="number" placeholder="Reps" onChange={this.handleNameChange('reps')}></input>
+                    <input type="text" placeholder="Length" onChange={this.handleNameChange('length')}></input>
+                    <input type="text" placeholder="Details" onChange={this.handleNameChange('details')}></input>
                     <input type="submit" value="Add Workout"></input>
                 </form>
             </div>

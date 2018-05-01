@@ -11,10 +11,15 @@ const Nav = () => (
           </Link>
         </li>
         <li>
+          <Link to="/newExercise">
+            Add New Exercise Type
+          </Link>
+        </li>
+        {/* <li>
           <Link to="/info">
             Info Page
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/add">
             Add New Workout

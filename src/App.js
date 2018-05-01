@@ -15,6 +15,7 @@ import AddWorkout from './components/AddWorkout/AddWorkout';
 import PastWorkouts from './components/PastWorkouts/PastWorkouts';
 
 import './styles/main.css';
+import NewExercise from './components/NewExercise/NewExercise';
 
 const App = () => (
   <div>
@@ -34,10 +35,10 @@ const App = () => (
           path="/user"
           component={UserPage}
         />
-        <Route
+        {/* <Route
           path="/info"
           component={InfoPage}
-        />
+        /> */}
         <Route
           path="/display"
           component={PastWorkouts}
@@ -46,9 +47,12 @@ const App = () => (
          path="/add"
          component={AddWorkout}
        />
+        <Route
+         path="/newExercise"
+         component={NewExercise}
+       />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
-        {/* {Routes for new pages built by kerry} */}
       </Switch>
     </Router>
   </div>

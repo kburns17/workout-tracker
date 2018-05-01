@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AddWorkout from '../AddWorkout/AddWorkout';
+import PastWorkouts from '../PastWorkouts/PastWorkouts';
 
 const mapStateToProps = state => ({
   user: state.user,

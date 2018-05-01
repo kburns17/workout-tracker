@@ -6,7 +6,7 @@ CREATE TABLE person (
 
 CREATE TABLE workouts (
     "id" SERIAL PRIMARY KEY,
-    "exercise" VARCHAR (80) NOT NULL,
+    "exercise_id" INT REFERENCES "exercises",
     "weight" VARCHAR (80),
     "sets" INTEGER,
     "reps" INTEGER,
@@ -14,4 +14,10 @@ CREATE TABLE workouts (
     "details" VARCHAR (240),
     "date_of_workout" timestamp default current_timestamp,
     "person_id" INT REFERENCES "person"
+);
+
+
+CREATE TABLE exercises (
+"id" serial primary key,
+"exercise" varchar(80)
 );
