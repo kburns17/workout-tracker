@@ -11,6 +11,7 @@ class AddWorkout extends Component {
         constructor(props){
             super(props)
             this.state={
+                // exercise_id: '',
                 weight: '',
                 sets: '',
                 reps: '',
@@ -21,7 +22,6 @@ class AddWorkout extends Component {
 
     handleNameChange = (propertyName) => {
             return (event) => {
-                console.log('change in input', event);
                 this.setState({
                     ...this.state,
                     [propertyName] : event.target.value,
@@ -44,7 +44,7 @@ class AddWorkout extends Component {
                 <Nav />
                 <h2>Add New Workout</h2>
                 <form onSubmit={this.addWorkout}>
-                    <select><option value="">--Exercise Type--</option></select>
+                    <select><option>--Exercise Type--</option></select>
                     <br></br>
                     <input type="text" placeholder="Weight" onChange={this.handleNameChange('weight')}></input>
                     <input type="number" placeholder="Sets" onChange={this.handleNameChange('sets')}></input>

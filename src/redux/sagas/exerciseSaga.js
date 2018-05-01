@@ -11,7 +11,6 @@ function* addNewExerciseSaga(action) {
     try {
         yield call(axios.post, '/api/exercises', action.payload )
     } catch (error) {
-        console.log('error POST exercise', error);
     }
 }
 
