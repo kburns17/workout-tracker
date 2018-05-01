@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import AddWorkout from '../AddWorkout/AddWorkout';
 
 const mapStateToProps = state => ({
   user: state.user,

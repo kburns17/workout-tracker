@@ -20,6 +20,16 @@ class AddWorkout extends Component {
             }
         }
 
+    handleNameChange = (propertyName) => {
+        console.log('change');
+            return (event) => {
+                this.setState({
+                    ...this.state,
+                    [propertyName] : event.target.value,
+                });
+            }
+    }
+
 
     addWorkout = (event) => {
         event.preventDefault();
@@ -35,12 +45,12 @@ class AddWorkout extends Component {
                 <Nav />
                 <h2>Add New Workout</h2>
                 <form onSubmit={this.addWorkout}>
-                    <input type="text" placeholder="Exercise Type"></input>
-                    <input type="text" placeholder="Description"></input>
-                    <input type="number" placeholder="Sets"></input>
-                    <input type="number" placeholder="Reps"></input>
-                    <input type="text" placeholder="Length"></input>
-                    <input type="text" placeholder="Details"></input>
+                    <input type="text" placeholder="Exercise Type" onChange={this.handleNameChange('Exercise Type')}></input>
+                    <input type="text" placeholder="Description" onChange={this.handleNameChange('Description')}></input>
+                    <input type="number" placeholder="Sets" onChange={this.handleNameChange('Sets')}></input>
+                    <input type="number" placeholder="Reps" onChange={this.handleNameChange('Reps')}></input>
+                    <input type="text" placeholder="Length" onChange={this.handleNameChange('Length')}></input>
+                    <input type="text" placeholder="Details" onChange={this.handleNameChange('Details')}></input>
                     <input type="submit" value="Add Workout"></input>
                 </form>
             </div>
