@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 
 const mapStateToProps = reduxState =>({
@@ -19,6 +20,13 @@ class AddWorkout extends Component {
                 details: ''
             }
         }
+
+    componentDidMount(){
+        this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        this.props.dispatch({
+            type: 'FETCH_EXERCISES'
+        })
+    }   
 
     handleNameChange = (propertyName) => {
             return (event) => {
@@ -39,12 +47,20 @@ class AddWorkout extends Component {
     }
 
     render(){
+
+        let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{
+            return(<option key={exercise.id}>{exercise.exercise}</option>)
+        })
+
         return(
             <div>
                 <Nav />
                 <h2>Add New Workout</h2>
                 <form onSubmit={this.addWorkout}>
-                    <select><option>--Exercise Type--</option></select>
+                    <select onChange={this.handleNameChange('exercise')}>
+                        <option>--Exercise Type--</option>
+                                    {exerciseArray}
+                    </select>
                     <br></br>
                     <input type="text" placeholder="Weight" onChange={this.handleNameChange('weight')}></input>
                     <input type="number" placeholder="Sets" onChange={this.handleNameChange('sets')}></input>
@@ -53,6 +69,8 @@ class AddWorkout extends Component {
                     <input type="text" placeholder="Details" onChange={this.handleNameChange('details')}></input>
                     <input type="submit" value="Add Workout"></input>
                 </form>
+                                 {JSON.stringify(this.props.reduxState.workoutReducer.exerciseReducer)}
+
             </div>
         )
     }

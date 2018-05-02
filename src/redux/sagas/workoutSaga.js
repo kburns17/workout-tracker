@@ -17,7 +17,7 @@ function* getWorkoutsSaga(action) {
     } catch (error) {
         console.log('error in GET:', error);
     }
-}
+};
 
 
 function* addWorkoutSaga(action) {
@@ -30,7 +30,7 @@ function* addWorkoutSaga(action) {
     } catch (error) {
         console.log('error ADD workout', error);
     }
-}
+};
 
 
 export default workoutSaga;

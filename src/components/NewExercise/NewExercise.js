@@ -24,7 +24,7 @@ class NewExercise extends Component {
     addNewExercise=(event)=>{
         event.preventDefault();
         this.props.dispatch({
-            type: 'NEW_EXERCISE',
+            type: 'ADD_EXERCISE',
             payload: this.state
         })
     }

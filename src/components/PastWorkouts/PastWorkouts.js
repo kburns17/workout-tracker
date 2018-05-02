@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 
 const mapStateToProps = reduxState =>({
@@ -11,7 +12,7 @@ class PastWorkouts extends Component {
 
 
     componentDidMount(){
-        //this.props.dispatch(fetchUser());
+        this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({
             type: 'FETCH_WORKOUTS'
         })
