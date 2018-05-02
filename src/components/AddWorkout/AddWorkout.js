@@ -11,7 +11,7 @@ class AddWorkout extends Component {
         constructor(props){
             super(props)
             this.state={
-                // exercise_id: '',
+                exercise: '',
                 weight: '',
                 sets: '',
                 reps: '',

@@ -9,7 +9,7 @@ function*  workoutSaga() {
 
 function* getWorkoutsSaga(action) {
     try {
-        const workoutsResponse = yield call(axios.get, '/api/workouts')
+        const workoutsResponse = yield call(axios.get, '/api/workouts')   
         yield put({
             type: 'SET_WORKOUTS',
             payload: workoutsResponse.data

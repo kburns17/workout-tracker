@@ -10,28 +10,27 @@ const mapStateToProps = reduxState =>({
 class PastWorkouts extends Component {
 
 
-componentDidMount(){
-    //this.props.dispatch(fetchUser());
-    this.props.dispatch({
-        type: 'FETCH_WORKOUTS'
-    })
-}
+    componentDidMount(){
+        //this.props.dispatch(fetchUser());
+        this.props.dispatch({
+            type: 'FETCH_WORKOUTS'
+        })
+    }
 
 
     render() {
-       console.log(this.state);
        
-        // let workoutArray = this.props.reduxState.workoutReducer.map((workout)=>{
-        //     return(<div key={workout.id}>{workout.exercise.id}{workout.weight}
-        //             {workout.sets}{workout.reps}{workout.length}{workout.details}</div>)
-        // });
+        let workoutArray = this.props.reduxState.workoutReducer.workoutReducer.map((workout)=>{
+            return(<div key={workout.id}><h3>{workout.exercise}</h3><p>{workout.weight}</p>
+                   <p>{workout.sets}</p><p>{workout.reps}</p><p>{workout.length}</p><p>{workout.details}</p></div>)
+        });
 
         return(
             <div>
                  <Nav />
                  <h2>Past Workouts</h2>
-                 {/* {workoutArray} */}
-                 {JSON.stringify(this.props.state.workoutReducer)}
+                 {workoutArray}
+                 {/* {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)} */}
             </div>
         )
     }

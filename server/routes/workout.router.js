@@ -5,10 +5,9 @@ const router = express.Router();
 //GET workouts from DB to display on DOM
 router.get('/', (req, res) => {
     if (req.isAuthenticated) {
-    let queryText = `SELECT * FROM workouts JOIN exercises 
-                    ON workouts.exercise_id = exercise.id`;
+    let queryText = `SELECT * FROM workouts JOIN exercises
+                    ON workouts.exercise_id = exercises.id`;
         pool.query(queryText).then((result)=>{
-            console.log(result.rows);
             res.send(result.rows)
         }).catch((error)=>{
             console.log('error in GET', error);
