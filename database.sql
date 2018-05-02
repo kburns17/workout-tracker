@@ -7,11 +7,12 @@ CREATE TABLE person (
 CREATE TABLE workouts (
     "id" SERIAL PRIMARY KEY,
     "exercise_id" INT REFERENCES "exercises",
-    "weight" VARCHAR (80),
+    "weight" INTEGER,
     "sets" INTEGER,
     "reps" INTEGER,
     "length" VARCHAR (80),
     "details" VARCHAR (240),
+    "favorite" boolean default false,
     "date_of_workout" timestamp default current_timestamp,
     "person_id" INT REFERENCES "person"
 );

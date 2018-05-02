@@ -31,7 +31,7 @@ class PastWorkouts extends Component {
                  <Nav />
                  <h2>Past Workouts</h2>
                  {workoutArray}
-                 {/* {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)} */}
+                 {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)}
             </div>
         )
     }
