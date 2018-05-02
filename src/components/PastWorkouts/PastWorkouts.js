@@ -19,14 +19,19 @@ componentDidMount(){
 
 
     render() {
-       console.log(this.props.state);
+       console.log(this.state);
        
-        //let workoutArray = this.props.
+        // let workoutArray = this.props.reduxState.workoutReducer.map((workout)=>{
+        //     return(<div key={workout.id}>{workout.exercise.id}{workout.weight}
+        //             {workout.sets}{workout.reps}{workout.length}{workout.details}</div>)
+        // });
+
         return(
             <div>
                  <Nav />
                  <h2>Past Workouts</h2>
-                 {/* {this.props.state.workoutReducer} */}
+                 {/* {workoutArray} */}
+                 {JSON.stringify(this.props.state.workoutReducer)}
             </div>
         )
     }
