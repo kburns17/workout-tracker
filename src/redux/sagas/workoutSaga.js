@@ -5,6 +5,7 @@ import axios from 'axios';
 function*  workoutSaga() {
     yield takeEvery('FETCH_WORKOUTS', getWorkoutsSaga);
     yield takeEvery('ADD_WORKOUT', addWorkoutSaga);
+    yield takeEvery('DELETE_WORKOUT', deleteWorkoutSaga);
 }
 
 function* getWorkoutsSaga(action) {
@@ -32,5 +33,18 @@ function* addWorkoutSaga(action) {
     }
 };
 
+function* deleteWorkoutSaga(action){
+    console.log('at saga', action.payload.user);
+    try {
+        yield call(axios.delete, '/api/workouts/:id', action.payload)
+        yield put({
+            type: 'FETCH_WORKOUTS'
+        })
+    } catch (error) {
+        console.log('error DELETE at saga:', error);
+        
+    }
+}
 
+//, action.payload.user
 export default workoutSaga;
