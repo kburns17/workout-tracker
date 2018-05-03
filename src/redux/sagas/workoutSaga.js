@@ -3,13 +3,13 @@ import axios from 'axios';
 
 
 function*  workoutSaga() {
-    yield takeEvery('FETCH_WORKOUTS', getWorkoutsSaga);
+    yield takeEvery('FETCH_WORKOUTS', getWorkoutSaga);
     yield takeEvery('ADD_WORKOUT', addWorkoutSaga);
     yield takeEvery('DELETE_WORKOUT', deleteWorkoutSaga);
-    yield takeEvery('UPDATE_WORKOUT', updateWorkoutSaga);
+    yield takeEvery('FAVORITE_WORKOUT', favoriteWorkoutSaga);
 }
 
-function* getWorkoutsSaga(action) {
+function* getWorkoutSaga(action) {
     try {
         const workoutsResponse = yield call(axios.get, '/api/workouts')   
         yield put({
@@ -25,7 +25,6 @@ function* getWorkoutsSaga(action) {
 function* addWorkoutSaga(action) {
     try {
         yield call(axios.post, '/api/workouts', action.payload )
-
         yield put({
             type: 'FETCH_WORKOUTS'
         })
@@ -46,10 +45,16 @@ function* deleteWorkoutSaga(action){
     }
 }
 
-function* updateWorkoutSaga(action){
-    console.log('UPDATE SAGA', action.payload );
-    
+function* favoriteWorkoutSaga(action){
+    console.log('FAV saga');
+    try {
+        yield call(axios.put, 'api/workouts/' + action.payload.id)
+        yield put({
+            type: 'FETCH_WORKOUTS'
+        })
+    } catch (error) {
+        console.log('error FAV saga:', error);
+    }
 }
 
-//, action.payload.user
 export default workoutSaga;

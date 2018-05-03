@@ -14,13 +14,13 @@ class NewExercise extends Component {
                exercise: ''
            } 
         }
-
+    //handles state change for new exercise
     handleNameChange = (event) => {  
         this.setState({
             exercise: event.target.value
         })
     }    
-
+    //on click, dispatches new exercise to redux to be placed into DB
     addNewExercise=(event)=>{
         event.preventDefault();
         this.props.dispatch({

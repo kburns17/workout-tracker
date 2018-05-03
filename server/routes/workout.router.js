@@ -31,8 +31,6 @@ router.get('/', (req, res) => {
 });
 
 
-//workout.exercise.id, 
-//workout.user.id
 // POST a new workout to the workout table
 router.post('/', (req, res) => {
     console.log(req.body);
@@ -51,6 +49,7 @@ router.post('/', (req, res) => {
     }
 });
 
+//removes a workout from list
 router.delete('/:id', (req, res)=>{
     console.log('in DELETE at server', req.params.id);
     if (req.isAuthenticated()) {
@@ -66,5 +65,25 @@ router.delete('/:id', (req, res)=>{
         res.sendStatus(403)
     }
 });
+
+//marks a workout as a favorite
+router.put('/:id', (req, res)=>{
+    console.log('FAV at server', req.params.id);
+    if (req.isAuthenticated()) {
+        const queryText = `UPDATE workouts SET "favorite" = NOT favorite WHERE "id" = $1`;
+        pool.query(queryText, [req.params.id])
+        .then((result)=>{
+            res.sendStatus(200)
+        }).catch((error)=>{
+            console.log('FAV at server', error);
+            res.sendStatus(500)
+        })
+    } else {
+        res.sendStatus(403)
+    }
+});
+
+
+
 
 module.exports = router;

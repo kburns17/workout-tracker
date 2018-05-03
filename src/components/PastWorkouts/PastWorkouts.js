@@ -10,7 +10,7 @@ const mapStateToProps = reduxState =>({
 
 class PastWorkouts extends Component {
 
-
+    //displays current workouts on page load
     componentDidMount(){
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({
@@ -18,7 +18,7 @@ class PastWorkouts extends Component {
         })
     }
 
-
+    //removes workout
     deleteWorkout = (workout)=>{
         console.log('delete clicked', workout, this.props.reduxState.user);
         this.props.dispatch({
@@ -30,11 +30,11 @@ class PastWorkouts extends Component {
         })
     }
 
-
-    updateWorkout = (workout)=>{
+    // bookmarks a workout as a favorite
+    favoriteWorkout = (workout)=>{
         console.log('update clicked', workout);
         this.props.dispatch({
-            type: 'UPDATE_WORKOUT',
+            type: 'FAVORITE_WORKOUT',
             payload: workout
         })
     }
@@ -46,8 +46,8 @@ class PastWorkouts extends Component {
             return(<div key={workout.id}><h3>{workout.exercise}</h3><p>{workout.weight}</p>
                    <p>{workout.sets}</p><p>{workout.reps}</p><p>{workout.length}</p>
                    <p>{workout.details}{workout.favorite}</p>
-                   <button onClick={()=>this.deleteWorkout(workout)}>Delete</button>
-                   <button onClick={()=>this.updateWorkout(workout)}>Update Workout</button></div>)
+                   <button onClick={()=>this.deleteWorkout(workout)}>Remove</button>
+                   <button onClick={()=>this.favoriteWorkout(workout)}>Favorite</button></div>)
         });
 
         return(

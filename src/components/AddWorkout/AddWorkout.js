@@ -20,14 +20,14 @@ class AddWorkout extends Component {
                 details: ''
             }
         }
-
+    //Adds all exercises to drop down on page load
     componentDidMount(){
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({
             type: 'FETCH_EXERCISES'
         })
     }   
-
+    //handles change of state for new workout input
     handleNameChange = (propertyName) => {
             return (event) => {
                 this.setState({
@@ -37,7 +37,7 @@ class AddWorkout extends Component {
             }
     }
 
-
+    // on click, dispatches new workout to redux to be picked up by reducer and added to DB
     addWorkout = (event) => {
         event.preventDefault();
         this.props.dispatch({
@@ -47,7 +47,7 @@ class AddWorkout extends Component {
     }
 
     render(){
-
+        // mapping over this reducer to get all exercises on the drop down options
         let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
             return(<option key={exercise.id} value={exercise.id}>{exercise.exercise}</option>)
         })
