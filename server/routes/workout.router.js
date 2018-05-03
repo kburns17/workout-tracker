@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
                     "workouts"."date_of_workout",
                     "workouts"."person_id",
                     "exercises"."exercise",
-                    "exercises"."id" as "exercise_id"
+                    "exercises"."id" as "exercise.id"
                     FROM workouts JOIN exercises
                     ON workouts.exercise_id = exercises.id`;
         pool.query(queryText).then((result)=>{
