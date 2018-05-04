@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import WorkoutItem from './PastWorkoutItem';
 
 
 const mapStateToProps = reduxState =>({
@@ -43,11 +44,14 @@ class PastWorkouts extends Component {
     render() {
        
         let workoutArray = this.props.reduxState.workoutReducer.workoutReducer.map((workout)=>{
-            return(<div key={workout.id}><h3>{workout.exercise}</h3><p>{workout.weight}</p>
-                   <p>{workout.sets}</p><p>{workout.reps}</p><p>{workout.length}</p>
-                   <p>{workout.details}{workout.favorite}</p>
-                   <button onClick={()=>this.deleteWorkout(workout)}>Remove</button>
-                   <button onClick={()=>this.favoriteWorkout(workout)}>Favorite</button></div>)
+            return(<WorkoutItem key={workout.id} workout={workout} 
+                                deleteWorkout={this.deleteWorkout} 
+                                favoriteWorkout={this.favoriteWorkout}/>)
+                //     <div key={workout.id}><h3>{workout.exercise}</h3><p>{workout.weight}</p>
+                //    <p>{workout.sets}</p><p>{workout.reps}</p><p>{workout.length}</p>
+                //    <p>{workout.details}{workout.favorite}</p>
+                //    <button onClick={()=>this.deleteWorkout(workout)}>Remove</button>
+                //    <button onClick={()=>this.favoriteWorkout(workout)}>Favorite</button></div>
         });
 
         return(
@@ -55,7 +59,7 @@ class PastWorkouts extends Component {
                  <Nav />
                  <h2>Past Workouts</h2>
                  {workoutArray}
-                 {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)}
+                 {/* {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)} */}
             </div>
         )
     }
