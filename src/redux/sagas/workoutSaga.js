@@ -7,6 +7,7 @@ function*  workoutSaga() {
     yield takeEvery('ADD_WORKOUT', addWorkoutSaga);
     yield takeEvery('DELETE_WORKOUT', deleteWorkoutSaga);
     yield takeEvery('FAVORITE_WORKOUT', favoriteWorkoutSaga);
+    yield takeEvery('UPDATE_WORKOUT', updateWorkoutSaga);
 }
 
 function* getWorkoutSaga(action) {
@@ -34,9 +35,8 @@ function* addWorkoutSaga(action) {
 };
 
 function* deleteWorkoutSaga(action){
-    console.log('at saga', action.payload.item.id, action.payload.user);
     try {
-        yield call(axios.delete, '/api/workouts/' + action.payload.item.id, action.payload.user )
+        yield call(axios.delete, '/api/workouts/' + action.payload.item.id, action.payload )
         yield put({
             type: 'FETCH_WORKOUTS'
         })
@@ -54,6 +54,18 @@ function* favoriteWorkoutSaga(action){
         })
     } catch (error) {
         console.log('error FAV saga:', error);
+    }
+}
+
+function* updateWorkoutSaga(action){
+    console.log('UPDATE saga', action.payload);
+    try {
+        yield call(axios.put, 'api/workouts/' + action.payload.id, action.payload)
+        yield put({
+            type: 'FETCH_WORKOUTS'
+        })
+    } catch (error) {
+        console.log('error UPDATE saga:', error);
     }
 }
 

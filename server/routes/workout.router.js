@@ -18,8 +18,8 @@ router.get('/', (req, res) => {
                     "exercises"."exercise",
                     "exercises"."id" as "exercises.id"
                     FROM workouts JOIN exercises
-                    ON workouts.exercise_id = exercises.id`;
-        pool.query(queryText).then((result)=>{
+                    ON workouts.exercise_id = exercises.id WHERE workouts.person_id = $1`;
+        pool.query(queryText, [req.user.id]).then((result)=>{
             res.send(result.rows)
         }).catch((error)=>{
             console.log('error in GET workouts', error);
@@ -67,21 +67,40 @@ router.delete('/:id', (req, res)=>{
 });
 
 //marks a workout as a favorite
+// router.put('/:id', (req, res)=>{
+//     console.log('FAV at server', req.params.id);
+//     if (req.isAuthenticated()) {
+//         const queryText = `UPDATE workouts SET "favorite" = NOT favorite WHERE "id" = $1`;
+//         pool.query(queryText, [req.params.id])
+//         .then((result)=>{
+//             res.sendStatus(200)
+//         }).catch((error)=>{
+//             console.log('FAV at server', error);
+//             res.sendStatus(500)
+//         })
+//     } else {
+//         res.sendStatus(403)
+//     }
+// });
+
 router.put('/:id', (req, res)=>{
-    console.log('FAV at server', req.params.id);
+    console.log('Update at server', req.body);
     if (req.isAuthenticated()) {
-        const queryText = `UPDATE workouts SET "favorite" = NOT favorite WHERE "id" = $1`;
-        pool.query(queryText, [req.params.id])
+        let workout = req.body;
+        const queryText = `UPDATE workouts SET exercise_id = $1, weight = $2, sets = $3, reps = $4, length = $5, details = $6 WHERE "id" = $7`;
+        pool.query(queryText, [workout.exercise_id, workout.weight, workout.sets, workout.reps, workout.length, workout.details, req.body.id])
         .then((result)=>{
             res.sendStatus(200)
         }).catch((error)=>{
-            console.log('FAV at server', error);
+            console.log('update at server', error);
             res.sendStatus(500)
         })
     } else {
         res.sendStatus(403)
     }
 });
+
+
 
 
 

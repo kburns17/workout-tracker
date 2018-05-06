@@ -44,6 +44,7 @@ class AddWorkout extends Component {
             type: 'ADD_WORKOUT',
             payload: this.state
         })
+        console.log(this.state);
     }
 
     render(){
@@ -65,7 +66,7 @@ class AddWorkout extends Component {
                     <input type="number" placeholder="Weight" onChange={this.handleNameChange('weight')}></input>
                     <input type="number" placeholder="Sets" onChange={this.handleNameChange('sets')}></input>
                     <input type="number" placeholder="Reps" onChange={this.handleNameChange('reps')}></input>
-                    <input type="text" placeholder="Length" onChange={this.handleNameChange('length')}></input>
+                    <input type="text" placeholder="Duration" onChange={this.handleNameChange('length')}></input>
                     <input type="text" placeholder="Details" onChange={this.handleNameChange('details')}></input>
                     <input type="submit" value="Add Workout"></input>
                 </form>
