@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './PastWorkout.css';
+import Button from 'material-ui/Button';
+import { Edit, Delete, Favorite, Update } from '@material-ui/icons';
 
 
 const mapStateToProps = reduxState =>({
@@ -46,7 +48,6 @@ class PastWorkoutItem extends Component {
                 [propertyName] : event.target.value,
                 }
             });
-            console.log(this.state.workoutInputs)
         }
     }
 
@@ -74,27 +75,26 @@ class PastWorkoutItem extends Component {
         if (this.state.editMode) {
             return(<div className="viewItem"><p>Edit Workout</p>
                 <form onSubmit={this.updateWorkout}>
-                    <select onChange={this.handleChangeWorkout('exercise')}>
+                        <select onChange={this.handleChangeWorkout('exercise')}>
                             <option>--Exercise Type--</option>
                                     {exerciseArray}
                         </select>
-
                     <input type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}></input>
                     <input type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}></input>
                     <input type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}></input>
                     <input type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}></input>
                     <input type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}></input>
-                    <input type="submit" value="Update"></input>
-                    <button onClick={this.handleDeleteClick}>Remove</button>
+                    <Button size="small" variant="flat" color="primary" type="submit">Update< Update /></Button>
+                    <Button size="small" variant="flat" color="primary" onClick={this.handleDeleteClick}>Remove< Delete /></Button>
                 </form>
                     </div>)
             
         } else {
-        return(<div className="viewItem"><h3>{this.props.workout.exercise}</h3><p>{this.props.workout.weight}</p>
-            <p>{this.props.workout.sets}</p><p>{this.props.workout.reps}</p><p>{this.props.workout.length}</p>
-            <p>{this.props.workout.details}{this.props.workout.favorite}</p>
-            <button onClick={this.handleFavoriteClick}>Favorite</button>
-            <button onClick={this.handleEditClick}>Edit</button></div>)
+        return(<div className="viewItem"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
+            <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
+            <p>Details: {this.props.workout.details}{this.props.workout.favorite}</p>
+            <Button size="small" variant="flat" color="primary" onClick={this.handleFavoriteClick}>Favorite< Favorite /></Button>
+            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>)
             }
         }
 

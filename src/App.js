@@ -10,14 +10,26 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+// import InfoPage from './components/InfoPage/InfoPage';
 import AddWorkout from './components/AddWorkout/AddWorkout';
 import PastWorkouts from './components/PastWorkouts/PastWorkouts';
-
-import './styles/main.css';
 import NewExercise from './components/NewExercise/NewExercise';
+import './styles/main.css';
+// Styling imports below
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createMuiTheme } from 'material-ui/styles';
+import brown from 'material-ui/colors/brown';
+import blue from  'material-ui/colors/blue';
+
+  const theme = createMuiTheme({
+    palette: {
+      primary: blue, 
+      secondary: brown
+    }
+  });
 
 const App = () => (
+  <MuiThemeProvider theme={theme}>
   <div>
     <Header title="Workout Tracker" />
     <Router>
@@ -56,6 +68,7 @@ const App = () => (
       </Switch>
     </Router>
   </div>
+  </MuiThemeProvider>
 );
 
 export default App;

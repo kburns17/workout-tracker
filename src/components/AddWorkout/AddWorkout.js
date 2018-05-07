@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Button from 'material-ui/Button';
 
 
 const mapStateToProps = reduxState =>({
@@ -63,15 +64,15 @@ class AddWorkout extends Component {
                                     {exerciseArray}
                         </select>
                     <br></br>
-                    <input type="number" placeholder="Weight" onChange={this.handleNameChange('weight')}></input>
-                    <input type="number" placeholder="Sets" onChange={this.handleNameChange('sets')}></input>
-                    <input type="number" placeholder="Reps" onChange={this.handleNameChange('reps')}></input>
-                    <input type="text" placeholder="Duration" onChange={this.handleNameChange('length')}></input>
-                    <input type="text" placeholder="Details" onChange={this.handleNameChange('details')}></input>
-                    <input type="submit" value="Add Workout"></input>
+                    <input type="number" placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
+                    <input type="number" placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
+                    <input type="number" placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
+                    <input type="text" placeholder="Duration" onChange={this.handleNameChange('length')}/>
+                    <input type="text" placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
+                    <br></br>
+                    <Button size="small" variant="flat" color="primary" type="submit">Add New Workout</Button>
                 </form>
                                  {/* {JSON.stringify(this.props.reduxState.workoutReducer.exerciseReducer)} */}
-
             </div>
         )
     }
