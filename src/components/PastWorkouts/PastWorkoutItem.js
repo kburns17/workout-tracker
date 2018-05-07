@@ -32,6 +32,12 @@ class PastWorkoutItem extends Component {
         }
     }
 
+    //Adds all exercises to drop down on page load
+    componentDidMount(){
+        this.props.dispatch({
+            type: 'FETCH_EXERCISES'
+        })
+    }  
 
     updateWorkout = (workout) =>{
         this.props.dispatch({
@@ -72,7 +78,7 @@ class PastWorkoutItem extends Component {
     
 
     render(){
-        let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
+        let exerciseArrayTwo = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
             return(<option key={exercise.id} value={exercise.id}>{exercise.exercise}</option>)
         })
 
@@ -81,7 +87,7 @@ class PastWorkoutItem extends Component {
                 <form onSubmit={this.updateWorkout}>
                         <select onChange={this.handleChangeWorkout('exercise')}>
                         <option>Exercise Type</option>
-                                    {exerciseArray}
+                                    {exerciseArrayTwo}
                         </select>
                     <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/>
                     <TextField  type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}/>
