@@ -22,29 +22,31 @@ class PastWorkoutItem extends Component {
                reps: this.props.workout.reps,
                length: this.props.workout.length,
                details: this.props.workout.details,
+               favorite: this.props.workout.favorite
             }
         }
     }
 
 
     updateWorkout = (workout) =>{
-        this.setState({
-            editMode: false, 
-        })
         this.props.dispatch({
             type: 'UPDATE_WORKOUT',
             payload: this.state.workoutInputs
+        })
+        this.setState({
+            editMode: false, 
         })
     }
 
     handleChangeWorkout = (propertyName) => {
         return (event) => {
             this.setState({
+                workoutInputs: {
                 ...this.state.workoutInputs,
                 [propertyName] : event.target.value,
+                }
             });
-            console.log('in edit');
-            
+            console.log(this.state.workoutInputs)
         }
     }
 
@@ -65,16 +67,26 @@ class PastWorkoutItem extends Component {
     
 
     render(){
+        let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
+            return(<option key={exercise.id} value={exercise.id}>{exercise.exercise}</option>)
+        })
+
         if (this.state.editMode) {
             return(<div className="viewItem"><p>Edit Workout</p>
-                    <input type="text" placeholder={this.state.workoutInputs.exercise} onChange={this.handleChangeWorkout('exercise')}/>
+                <form onSubmit={this.updateWorkout}>
+                    <select onChange={this.handleChangeWorkout('exercise')}>
+                            <option>--Exercise Type--</option>
+                                    {exerciseArray}
+                        </select>
+
                     <input type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}></input>
                     <input type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}></input>
                     <input type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}></input>
                     <input type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}></input>
                     <input type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}></input>
-                    <button onClick={this.updateWorkout}>Update</button>
+                    <input type="submit" value="Update"></input>
                     <button onClick={this.handleDeleteClick}>Remove</button>
+                </form>
                     </div>)
             
         } else {
