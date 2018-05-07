@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+
 
 
 const mapStateToProps = reduxState =>({
@@ -60,17 +62,17 @@ class AddWorkout extends Component {
                 <h2>Add New Workout</h2>
                 <form onSubmit={this.addWorkout}>
                         <select onChange={this.handleNameChange('exercise')}>
-                            <option>--Exercise Type--</option>
+                            <option>Exercise Type</option>
                                     {exerciseArray}
                         </select>
                     <br></br>
-                    <input type="number" placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
-                    <input type="number" placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
-                    <input type="number" placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
-                    <input type="text" placeholder="Duration" onChange={this.handleNameChange('length')}/>
-                    <input type="text" placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
+                    <TextField type="number" placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
+                    <TextField type="number" placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
+                    <TextField type="number" placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
+                    <TextField type="text" placeholder="Duration" onChange={this.handleNameChange('length')}/>
+                    <TextField type="text" placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
                     <br></br>
-                    <Button size="small" variant="flat" color="primary" type="submit">Add New Workout</Button>
+                    <Button size="small" variant="raised" color="primary" type="submit">Add New Workout</Button>
                 </form>
                                  {/* {JSON.stringify(this.props.reduxState.workoutReducer.exerciseReducer)} */}
             </div>

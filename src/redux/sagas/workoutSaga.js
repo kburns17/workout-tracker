@@ -48,7 +48,7 @@ function* deleteWorkoutSaga(action){
 function* favoriteWorkoutSaga(action){
     console.log('FAV saga');
     try {
-        yield call(axios.put, 'api/workouts/' + action.payload.id, action.payload)
+        yield call(axios.put, 'api/workouts/favorite/' + action.payload.id, action.payload)
         yield put({
             type: 'FETCH_WORKOUTS'
         })

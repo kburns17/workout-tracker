@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import Button from 'material-ui/Button';
-
+import TextField from 'material-ui/TextField';
 
 const mapStateToProps = reduxState =>({
     reduxState
@@ -38,8 +38,8 @@ class NewExercise extends Component {
                 <Nav />
                 <h2>Add New Exercise Type</h2>
                 <form onSubmit={this.addNewExercise}>
-                <input type="text" placeholder="New Exercise" onChange={this.handleNameChange}></input>
-                <Button size="small" variant="flat" color="primary" type="submit">Add New Exercise</Button>
+                    <TextField type="text" placeholder="New Exercise Type" onChange={this.handleNameChange}></TextField>
+                    <Button size="small" variant="raised" color="primary" type="submit">Add New Exercise</Button>
                 </form>
             </div>
         )
