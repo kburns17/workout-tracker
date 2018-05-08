@@ -35,6 +35,7 @@ function* addWorkoutSaga(action) {
 };
 
 function* deleteWorkoutSaga(action){
+    console.log(action.payload);
     try {
         yield call(axios.delete, '/api/workouts/' + action.payload.item.id, action.payload.user )
         yield put({

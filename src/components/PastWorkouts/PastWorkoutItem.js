@@ -73,6 +73,7 @@ class PastWorkoutItem extends Component {
         this.props.deleteWorkout(this.props.workout)
     }
 
+
     handleFavoriteClick = (event)=>{
         this.props.favoriteWorkout(this.props.workout)
     }
@@ -91,8 +92,7 @@ class PastWorkoutItem extends Component {
                                 select
                                 label="Exercise Type"
                                 value={this.state.workoutInputs.exercise}
-                                helperText="Please select an exercise"
-                                onChange={this.handleChangeWorkout('exercise')}>
+                                helperText="Please select an exercise"                                onChange={this.handleChangeWorkout('exercise')}>
                                         {exerciseArray}
                         </TextField>
                     <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/>

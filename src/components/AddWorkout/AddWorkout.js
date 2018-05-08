@@ -5,6 +5,10 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Button from 'material-ui/Button';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
+import IconButton from 'material-ui/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 
 
@@ -21,7 +25,8 @@ class AddWorkout extends Component {
                 sets: '',
                 reps: '',
                 length: '',
-                details: ''
+                details: '',
+                open: false
             }
         }
     //Adds all exercises to drop down on page load
@@ -41,7 +46,8 @@ class AddWorkout extends Component {
             }
     }
 
-    // on click, dispatches new workout to redux to be picked up by reducer and added to DB
+    // on click, dispatches new workout to redux to be picked up by reducer and added to DB.
+    // then sets the state to clear inputs, and 'OPEN: true' for snackbar material-UI
     addWorkout = (event) => {
         event.preventDefault();
         this.props.dispatch({
@@ -54,10 +60,19 @@ class AddWorkout extends Component {
                 sets: '',
                 reps: '',
                 length: '',
-                details: ''
+                details: '',
+                open: true,
         })
         console.log(this.state);
     }
+
+    // removes snackbar and resets state of 'OPEN: false'
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        this.setState({ open: false });
+      };
 
     render(){
         // mapping over this reducer to get all exercises on the drop down options
@@ -76,6 +91,7 @@ class AddWorkout extends Component {
                                 label="Exercise Type"
                                 value={this.state.exercise}
                                 helperText="Please select an exercise"
+                                margin="normal"
                                 onChange={this.handleNameChange('exercise')}>
                                         {exerciseArray}
                         </TextField>
@@ -87,6 +103,30 @@ class AddWorkout extends Component {
                     <TextField type="text" value={this.state.details} placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
                     <br></br>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Workout</Button>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={this.state.open}
+                        autoHideDuration={6000}
+                        onClose={this.handleClose}
+                        ContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        message={<span id="message-id">Workout Added!</span>}
+                        action={[
+                                <IconButton
+                                key="close"
+                                aria-label="Close"
+                                color="inherit"
+                                // className={classes.close}
+                                onClick={this.handleClose}
+                                >
+                                <CloseIcon />
+                                </IconButton>,
+                        ]}
+                        />
                 </form>
                                  {/* {JSON.stringify(this.props.reduxState.workoutReducer.exerciseReducer)} */}
             </div>
