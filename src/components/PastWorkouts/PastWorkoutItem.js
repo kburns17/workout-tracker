@@ -38,7 +38,7 @@ class PastWorkoutItem extends Component {
             type: 'FETCH_EXERCISES'
         })
     }  
-
+    //
     updateWorkout = (workout) =>{
         this.props.dispatch({
             type: 'UPDATE_WORKOUT',
@@ -94,7 +94,7 @@ class PastWorkoutItem extends Component {
                     <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/>
                     <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/>
                     <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/>
-                    <Button size="small" variant="flat" color="primary" type="submit">Update< Update /></Button>
+                    <Button size="small" variant="flat" color="primary" type="submit">Save< Update /></Button>
                     <Button size="small" variant="flat" color="primary" onClick={this.handleDeleteClick}>Remove< Delete /></Button>
                 </form>
                     </div>)

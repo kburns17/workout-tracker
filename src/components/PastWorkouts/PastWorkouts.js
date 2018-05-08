@@ -20,6 +20,7 @@ class PastWorkouts extends Component {
     }
 
     //removes workout
+    // This function could be moved into PastWorkoutItem
     deleteWorkout = (workout)=>{
         console.log('delete clicked', workout, this.props.reduxState.user);
         this.props.dispatch({
@@ -32,6 +33,7 @@ class PastWorkouts extends Component {
     }
 
     // bookmarks a workout as a favorite
+    // This function could be moved into PastWorkoutItem
     favoriteWorkout = (workout)=>{
         console.log('update clicked', workout);
         this.props.dispatch({
@@ -47,11 +49,6 @@ class PastWorkouts extends Component {
             return(<WorkoutItem key={workout.id} workout={workout} 
                                 deleteWorkout={this.deleteWorkout} 
                                 favoriteWorkout={this.favoriteWorkout}/>)
-                //     <div key={workout.id}><h3>{workout.exercise}</h3><p>{workout.weight}</p>
-                //    <p>{workout.sets}</p><p>{workout.reps}</p><p>{workout.length}</p>
-                //    <p>{workout.details}{workout.favorite}</p>
-                //    <button onClick={()=>this.deleteWorkout(workout)}>Remove</button>
-                //    <button onClick={()=>this.favoriteWorkout(workout)}>Favorite</button></div>
         });
 
         return(

@@ -29,6 +29,9 @@ class NewExercise extends Component {
             type: 'ADD_EXERCISE',
             payload: this.state
         })
+        this.setState({
+            exercise: '',
+        })
     }
 
 
@@ -38,7 +41,7 @@ class NewExercise extends Component {
                 <Nav />
                 <h2>Add New Exercise Type</h2>
                 <form onSubmit={this.addNewExercise}>
-                    <TextField type="text" placeholder="New Exercise Type" onChange={this.handleNameChange}></TextField>
+                    <TextField type="text" value={this.state.exercise} placeholder="New Exercise Type" onChange={this.handleNameChange}></TextField>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Exercise</Button>
                 </form>
             </div>

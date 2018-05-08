@@ -47,6 +47,14 @@ class AddWorkout extends Component {
             type: 'ADD_WORKOUT',
             payload: this.state
         })
+        this.setState({
+                exercise: '',
+                weight: '',
+                sets: '',
+                reps: '',
+                length: '',
+                details: ''
+        })
         console.log(this.state);
     }
 
@@ -66,11 +74,11 @@ class AddWorkout extends Component {
                                     {exerciseArray}
                         </select>
                     <br></br>
-                    <TextField type="number" placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
-                    <TextField type="number" placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
-                    <TextField type="number" placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
-                    <TextField type="text" placeholder="Duration" onChange={this.handleNameChange('length')}/>
-                    <TextField type="text" placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
+                    <TextField type="number" value={this.state.weight} placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
+                    <TextField type="number" value={this.state.sets} placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
+                    <TextField type="number" value={this.state.reps} placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
+                    <TextField type="text" value={this.state.length} placeholder="Duration" onChange={this.handleNameChange('length')}/>
+                    <TextField type="text" value={this.state.details} placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
                     <br></br>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Workout</Button>
                 </form>
