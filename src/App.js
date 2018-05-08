@@ -31,7 +31,7 @@ import blue from  'material-ui/colors/blue';
 const App = () => (
   <MuiThemeProvider theme={theme}>
   <div>
-    <Header title="Workout Tracker" />
+    <Header title="Personal Workout Tracker" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

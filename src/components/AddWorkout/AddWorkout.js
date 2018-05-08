@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Button from 'material-ui/Button';
+import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 
 
@@ -61,7 +62,7 @@ class AddWorkout extends Component {
     render(){
         // mapping over this reducer to get all exercises on the drop down options
         let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
-            return(<option key={exercise.id} value={exercise.id}>{exercise.exercise}</option>)
+            return(<MenuItem key={exercise.id} value={exercise.id}>{exercise.exercise}</MenuItem>)
         })
 
         return(
@@ -69,10 +70,15 @@ class AddWorkout extends Component {
                 <Nav />
                 <h2>Add New Workout</h2>
                 <form onSubmit={this.addWorkout}>
-                        <select onChange={this.handleNameChange('exercise')}>
-                            <option>Exercise Type</option>
-                                    {exerciseArray}
-                        </select>
+                        <TextField
+                                id="select-exercise"
+                                select
+                                label="Exercise Type"
+                                value={this.state.exercise}
+                                helperText="Please select an exercise"
+                                onChange={this.handleNameChange('exercise')}>
+                                        {exerciseArray}
+                        </TextField>
                     <br></br>
                     <TextField type="number" value={this.state.weight} placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
                     <TextField type="number" value={this.state.sets} placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>

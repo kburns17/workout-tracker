@@ -4,6 +4,7 @@ import './PastWorkout.css';
 import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
 import { Edit, Delete, FavoriteBorder, Update } from '@material-ui/icons';
+import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 
 
@@ -78,17 +79,22 @@ class PastWorkoutItem extends Component {
     
 
     render(){
-        let exerciseArrayTwo = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
-            return(<option key={exercise.id} value={exercise.id}>{exercise.exercise}</option>)
+        let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
+            return(<MenuItem key={exercise.id} value={exercise.id}>{exercise.exercise}</MenuItem>)
         })
 
         if (this.state.editMode) {
             return(<div className="viewItem"><h3>Edit Workout</h3>
                 <form onSubmit={this.updateWorkout}>
-                        <select onChange={this.handleChangeWorkout('exercise')}>
-                        <option>Exercise Type</option>
-                                    {exerciseArrayTwo}
-                        </select>
+                        <TextField
+                                id="select-exercise"
+                                select
+                                label="Exercise Type"
+                                value={this.state.workoutInputs.exercise}
+                                helperText="Please select an exercise"
+                                onChange={this.handleChangeWorkout('exercise')}>
+                                        {exerciseArray}
+                        </TextField>
                     <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/>
                     <TextField  type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}/>
                     <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/>
