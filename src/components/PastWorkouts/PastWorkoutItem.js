@@ -17,6 +17,8 @@ class PastWorkoutItem extends Component {
         super(props)
         this.state = {
             editMode: false,
+            favorited: this.props.workout.favorite,
+            
 
             workoutInputs: {
                id: this.props.workout.id,
@@ -83,10 +85,12 @@ class PastWorkoutItem extends Component {
 
     // bookmarks a workout as a favorite
     favoriteWorkout = ()=>{
-        console.log('favorite clicked', this.props.workout);
         this.props.dispatch({
             type: 'FAVORITE_WORKOUT',
             payload: this.props.workout
+        })
+        this.setState({
+            favorited: !this.props.workout.favorite
         })
     }
 
@@ -117,6 +121,14 @@ class PastWorkoutItem extends Component {
                 </form>
                     </div>)
             
+        } else if(this.state.favorited){
+            return(<div className="viewItem"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
+            <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
+            <p>Details: {this.props.workout.details}</p>
+            <p>Date: {this.props.workout.date_of_workout}</p>{this.props.workout.favorite}
+            <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite /></Button>
+            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>)
+
         } else {
             return(<div className="viewItem"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
