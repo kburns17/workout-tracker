@@ -97,9 +97,13 @@ class AddWorkout extends Component {
                         </TextField>
                     <br></br>
                     <TextField type="number" value={this.state.weight} placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
+                    <br></br>
                     <TextField type="number" value={this.state.sets} placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
+                    <br></br>
                     <TextField type="number" value={this.state.reps} placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
+                    <br></br>
                     <TextField type="text" value={this.state.length} placeholder="Duration" onChange={this.handleNameChange('length')}/>
+                    <br></br>
                     <TextField type="text" value={this.state.details} placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
                     <br></br>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Workout</Button>
@@ -114,7 +118,7 @@ class AddWorkout extends Component {
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
-                        message={<span id="message-id">Workout Added!</span>}
+                        message={<span id="message-id">Success!</span>}
                         action={[
                                 <IconButton
                                 key="close"

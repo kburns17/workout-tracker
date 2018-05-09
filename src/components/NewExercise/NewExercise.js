@@ -44,7 +44,7 @@ class NewExercise extends Component {
           return;
         }
         this.setState({ open: false });
-      };
+        };
 
     render(){
         return(
@@ -53,6 +53,7 @@ class NewExercise extends Component {
                 <h2>Add New Exercise Type</h2>
                 <form onSubmit={this.addNewExercise}>
                     <TextField type="text" value={this.state.exercise} placeholder="New Exercise Type" onChange={this.handleNameChange}></TextField>
+                    <br></br>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Exercise</Button>
                     <Snackbar
                         anchorOrigin={{
@@ -65,17 +66,17 @@ class NewExercise extends Component {
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
-                        message={<span id="message-id">New Exercise Added</span>}
+                        message={<span id="message-id">Success!</span>}
                         action={[
-                                <IconButton
-                                key="close"
-                                aria-label="Close"
-                                color="inherit"
-                                // className={classes.close}
-                                onClick={this.handleClose}
-                                >
-                                <CloseIcon />
-                                </IconButton>,
+                            <IconButton
+                            key="close"
+                            aria-label="Close"
+                            color="inherit"
+                            // className={classes.close}
+                            onClick={this.handleClose}
+                            >
+                            <CloseIcon />
+                            </IconButton>,
                         ]}
                         />
                 </form>
