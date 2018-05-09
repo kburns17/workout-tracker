@@ -38,13 +38,13 @@ function* addWorkoutSaga(action) {
 
 function* deleteWorkoutSaga(action){
     console.log(action.payload);
-    swal({
-        title: "Success!",
-        text: "Workout removed",
-        icon: "success",
-      });
     try {
         yield call(axios.delete, '/api/workouts/' + action.payload.item.id, action.payload.user )
+        swal({
+            title: "Success!",
+            text: "Workout removed",
+            icon: "success",
+          });
         yield put({
             type: 'FETCH_WORKOUTS'
         })

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './PastWorkout.css';
 import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
-import { Edit, Delete, FavoriteBorder, Update } from '@material-ui/icons';
+import { Edit, Delete, FavoriteBorder, Favorite, Update } from '@material-ui/icons';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 
@@ -33,13 +33,14 @@ class PastWorkoutItem extends Component {
         }
     }
 
-    //Adds all exercises to drop down on page load
+    //GETS all exercises and SETS them to drop down on page load
     componentDidMount(){
         this.props.dispatch({
             type: 'FETCH_EXERCISES'
         })
     }  
-    //
+    // updates workout in database to new inputs.
+    // resets edit state to false to switch render to view workouts only
     updateWorkout = (workout) =>{
         this.props.dispatch({
             type: 'UPDATE_WORKOUT',
@@ -50,7 +51,7 @@ class PastWorkoutItem extends Component {
 
         })
     }
-
+    // sets the state for new inputs when in edit mode
     handleChangeWorkout = (propertyName) => {
         return (event) => {
             this.setState({
@@ -62,22 +63,32 @@ class PastWorkoutItem extends Component {
         }
     }
 
-
-    handleEditClick =(event)=>{
+    // toggles the render of edit mode on edit button click.
+    handleEditClick = (event)=>{
         this.setState({
             editMode: true
         })
     }
 
-    handleDeleteClick = (event)=>{
-        this.props.deleteWorkout(this.props.workout)
+    // removes a workout from DB
+    deleteWorkout = ()=>{
+        this.props.dispatch({
+            type: 'DELETE_WORKOUT',
+            payload: {
+                item: this.props.workout, 
+                user: this.props.reduxState.user
+            }
+        })
     }
 
-
-    handleFavoriteClick = (event)=>{
-        this.props.favoriteWorkout(this.props.workout)
+    // bookmarks a workout as a favorite
+    favoriteWorkout = ()=>{
+        console.log('favorite clicked', this.props.workout);
+        this.props.dispatch({
+            type: 'FAVORITE_WORKOUT',
+            payload: this.props.workout
+        })
     }
-    
 
     render(){
         let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
@@ -92,7 +103,8 @@ class PastWorkoutItem extends Component {
                                 select
                                 label="Exercise Type"
                                 value={this.state.workoutInputs.exercise}
-                                helperText="Please select an exercise"                                onChange={this.handleChangeWorkout('exercise')}>
+                                helperText="Please select an exercise" 
+                                onChange={this.handleChangeWorkout('exercise')}>
                                         {exerciseArray}
                         </TextField>
                     <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/>
@@ -101,7 +113,7 @@ class PastWorkoutItem extends Component {
                     <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/>
                     <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/>
                     <Button size="small" variant="flat" color="primary" type="submit">Save< Update /></Button>
-                    <Button size="small" variant="flat" color="primary" onClick={this.handleDeleteClick}>Remove< Delete /></Button>
+                    <Button size="small" variant="flat" color="primary" onClick={this.deleteWorkout}>Remove< Delete /></Button>
                 </form>
                     </div>)
             
@@ -110,7 +122,7 @@ class PastWorkoutItem extends Component {
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
                 <p>Details: {this.props.workout.details}</p>
                 <p>Date: {this.props.workout.date_of_workout}</p>{this.props.workout.favorite}
-                <Button size="small" variant="flat" color="primary" onClick={this.handleFavoriteClick}>Favorite< FavoriteBorder /></Button>
+                <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder /></Button>
                 <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>)
                 }
             }

@@ -118,7 +118,7 @@ class AddWorkout extends Component {
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
-                        message={<span id="message-id">Success!</span>}
+                        message={<span id="message-id">New Workout Added!</span>}
                         action={[
                                 <IconButton
                                 key="close"

@@ -4,12 +4,17 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import WorkoutItem from './PastWorkoutItem';
 
-
 const mapStateToProps = reduxState =>({
     reduxState
 });
 
 class PastWorkouts extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+           open: false,
+       } 
+    }
 
     //displays current workouts on page load
     componentDidMount(){
@@ -18,30 +23,6 @@ class PastWorkouts extends Component {
             type: 'FETCH_WORKOUTS'
         })
     }
-
-    //removes workout
-    // This function could be moved into PastWorkoutItem
-    deleteWorkout = (workout)=>{
-        console.log('delete clicked', workout, this.props.reduxState.user);
-        this.props.dispatch({
-            type: 'DELETE_WORKOUT',
-            payload: {
-                item: workout, 
-                user: this.props.reduxState.user
-            }
-        })
-    }
-
-    // bookmarks a workout as a favorite
-    // This function could be moved into PastWorkoutItem
-    favoriteWorkout = (workout)=>{
-        console.log('update clicked', workout);
-        this.props.dispatch({
-            type: 'FAVORITE_WORKOUT',
-            payload: workout
-        })
-    }
-
 
     render() {
        
