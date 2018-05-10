@@ -54,7 +54,6 @@ function* deleteWorkoutSaga(action){
 }
 
 function* favoriteWorkoutSaga(action){
-    console.log('FAV saga');
     try {
         yield call(axios.put, 'api/workouts/favorite/' + action.payload.id, action.payload)
         yield put({
@@ -66,7 +65,6 @@ function* favoriteWorkoutSaga(action){
 }
 
 function* updateWorkoutSaga(action){
-    console.log('UPDATE saga', action.payload);
     try {
         yield call(axios.put, 'api/workouts/' + action.payload.id, action.payload)
         yield put({

@@ -6,6 +6,9 @@ import Button from 'material-ui/Button';
 import { Edit, Delete, FavoriteBorder, Favorite, Update } from '@material-ui/icons';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
+import IconButton from 'material-ui/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const mapStateToProps = reduxState =>({
@@ -18,7 +21,7 @@ class PastWorkoutItem extends Component {
         this.state = {
             editMode: false,
             favorited: this.props.workout.favorite,
-            
+            open: false,
 
             workoutInputs: {
                id: this.props.workout.id,
@@ -41,18 +44,21 @@ class PastWorkoutItem extends Component {
             type: 'FETCH_EXERCISES'
         })
     }  
+
     // updates workout in database to new inputs.
     // resets edit state to false to switch render to view workouts only
     updateWorkout = (workout) =>{
+        console.log(this.state.workoutInputs);
+        
+        this.setState({
+            editMode: false, 
+        })
         this.props.dispatch({
             type: 'UPDATE_WORKOUT',
             payload: this.state.workoutInputs
         })
-        this.setState({
-            editMode: false, 
-
-        })
     }
+
     // sets the state for new inputs when in edit mode
     handleChangeWorkout = (propertyName) => {
         return (event) => {
@@ -90,9 +96,17 @@ class PastWorkoutItem extends Component {
             payload: this.props.workout
         })
         this.setState({
-            favorited: !this.props.workout.favorite
+            favorited: !this.props.workout.favorite,
+            open: true
         })
     }
+
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        this.setState({ open: false });
+        };
 
     render(){
         let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
@@ -106,9 +120,9 @@ class PastWorkoutItem extends Component {
                                 id="select-exercise"
                                 select
                                 label="Exercise Type"
-                                value={this.state.workoutInputs.exercise}
+                                value={this.state.workoutInputs.exercise_id}
                                 helperText="Please select an exercise" 
-                                onChange={this.handleChangeWorkout('exercise')}>
+                                onChange={this.handleChangeWorkout('exercise_id')}>
                                         {exerciseArray}
                         </TextField>
                     <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/>
@@ -126,7 +140,32 @@ class PastWorkoutItem extends Component {
             <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
             <p>Details: {this.props.workout.details}</p>
             <p>Date: {this.props.workout.date_of_workout}</p>{this.props.workout.favorite}
-            <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite /></Button>
+            <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite />
+            <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={this.state.open}
+                        autoHideDuration={1000}
+                        onClose={this.handleClose}
+                        ContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        message={<span id="message-id">Added to Favorites</span>}
+                        action={[
+                            <IconButton
+                            key="close"
+                            aria-label="Close"
+                            color="inherit"
+                            // className={classes.close}
+                            onClick={this.handleClose}
+                            >
+                            <CloseIcon />
+                            </IconButton>,
+                        ]}
+                        />
+            </Button>
             <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>)
 
         } else {
@@ -134,7 +173,26 @@ class PastWorkoutItem extends Component {
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
                 <p>Details: {this.props.workout.details}</p>
                 <p>Date: {this.props.workout.date_of_workout}</p>{this.props.workout.favorite}
-                <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder /></Button>
+                <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder />
+                <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom', horizontal: 'left',
+                        }}
+                        open={this.state.open}
+                        autoHideDuration={1000}
+                        onClose={this.handleClose}
+                        ContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        message={<span id="message-id">Removed from Favorites</span>}
+                        action={[
+                            <IconButton key="close" aria-label="Close" color="inherit"
+                            // className={classes.close}
+                            onClick={this.handleClose}
+                            ><CloseIcon />
+                            </IconButton>,
+                        ]}
+                        /></Button>
                 <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>)
                 }
             }

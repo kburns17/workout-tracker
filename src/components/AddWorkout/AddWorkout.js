@@ -20,7 +20,7 @@ class AddWorkout extends Component {
         constructor(props){
             super(props)
             this.state={
-                exercise: '',
+                exercise_id: '',
                 weight: '',
                 sets: '',
                 reps: '',
@@ -55,7 +55,7 @@ class AddWorkout extends Component {
             payload: this.state
         })
         this.setState({
-                exercise: '',
+                exercise_id: '',
                 weight: '',
                 sets: '',
                 reps: '',
@@ -89,11 +89,12 @@ class AddWorkout extends Component {
                                 id="select-exercise"
                                 select
                                 label="Exercise Type"
-                                value={this.state.exercise}
+                                value={this.state.exercise_id}
                                 helperText="Please select an exercise"
                                 margin="normal"
-                                onChange={this.handleNameChange('exercise')}>
+                                onChange={this.handleNameChange('exercise_id')}>
                                         {exerciseArray}
+                                        
                         </TextField>
                     <br></br>
                     <TextField type="number" value={this.state.weight} placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>

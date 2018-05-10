@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
         let workout = req.body;
         let queryText = `INSERT INTO "workouts" (exercise_id, weight, sets, reps, length, details, person_id) 
                         VALUES($1, $2, $3, $4, $5, $6, $7)`;
-        pool.query(queryText, [workout.exercise, workout.weight, workout.sets, workout.reps, workout.length, workout.details, req.user.id] ).then((result)=>{
+        pool.query(queryText, [workout.exercise_id, workout.weight, workout.sets, workout.reps, workout.length, workout.details, req.user.id] ).then((result)=>{
             res.sendStatus(200);
         }).catch((error)=>{
             console.log('error posting workout', error);
