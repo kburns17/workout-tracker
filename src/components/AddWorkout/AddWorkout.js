@@ -114,7 +114,7 @@ class AddWorkout extends Component {
                             horizontal: 'left',
                         }}
                         open={this.state.open}
-                        autoHideDuration={6000}
+                        autoHideDuration={2000}
                         onClose={this.handleClose}
                         ContentProps={{
                             'aria-describedby': 'message-id',
