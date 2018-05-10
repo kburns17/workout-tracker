@@ -12,6 +12,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Grid from 'material-ui/Grid';
 import Card from 'material-ui/Card';
 import moment from 'moment';
+import swal from 'sweetalert';
 
 
 
@@ -84,13 +85,24 @@ class PastWorkoutItem extends Component {
 
     // removes a workout from DB
     deleteWorkout = ()=>{
+        swal({
+            title: "Are you sure you want to delete?",
+            buttons: true,
+            dangerMode: true,
+        })
+    .then((value) => { 
+        if (value === true) { 
+            swal("Workout Removed!", {
+                icon: "success"})
+            }
         this.props.dispatch({
             type: 'DELETE_WORKOUT',
             payload: {
                 item: this.props.workout, 
                 user: this.props.reduxState.user
             }
-        })
+        });
+    })
     }
 
     // bookmarks a workout as a favorite
@@ -209,6 +221,5 @@ class PastWorkoutItem extends Component {
             }
 
 }
-
 
 export default connect(mapStateToProps)(PastWorkoutItem);

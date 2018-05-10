@@ -1,6 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-import swal from 'sweetalert';
 
 
 
@@ -40,11 +39,6 @@ function* deleteWorkoutSaga(action){
     console.log(action.payload);
     try {
         yield call(axios.delete, '/api/workouts/' + action.payload.item.id, action.payload.user )
-        swal({
-            title: "Success!",
-            text: "Workout removed",
-            icon: "success",
-          });
         yield put({
             type: 'FETCH_WORKOUTS'
         })

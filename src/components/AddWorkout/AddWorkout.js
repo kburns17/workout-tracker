@@ -63,7 +63,6 @@ class AddWorkout extends Component {
                 details: '',
                 open: true,
         })
-        console.log(this.state);
     }
 
     // removes snackbar and resets state of 'OPEN: false'
