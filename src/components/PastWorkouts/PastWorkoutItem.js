@@ -11,7 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Grid from 'material-ui/Grid';
 import Card from 'material-ui/Card';
-
+import moment from 'moment';
 
 
 
@@ -116,6 +116,7 @@ class PastWorkoutItem extends Component {
         let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
             return(<MenuItem key={exercise.id} value={exercise.id}>{exercise.exercise}</MenuItem>)
         })
+        let workoutDate = moment(this.props.workout.date_of_workout).format('MMMM Do YYYY, h:mm a');
         // this will render if you are in editMode
         if (this.state.editMode) {
             return(<div><h3>Edit Workout</h3>
@@ -149,7 +150,7 @@ class PastWorkoutItem extends Component {
             return(<Card><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
             <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
             <p>Details: {this.props.workout.details}</p>
-            <p>Date: {this.props.workout.date_of_workout}</p>{this.props.workout.favorite}
+            <p>Date: {workoutDate}</p>{this.props.workout.favorite}
             <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite />
             <Snackbar
                         anchorOrigin={{
@@ -182,7 +183,7 @@ class PastWorkoutItem extends Component {
             return(<Card><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
                 <p>Details: {this.props.workout.details}</p>
-                <p>Date: {this.props.workout.date_of_workout}</p>{this.props.workout.favorite}
+                <p>Date: {workoutDate}</p>{this.props.workout.favorite}
                 <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder />
                 <Snackbar
                         anchorOrigin={{
