@@ -94,18 +94,12 @@ class AddWorkout extends Component {
                                 onChange={this.handleNameChange('exercise_id')}>
                                         {exerciseArray}
                                         
-                        </TextField>
-                    <br></br>
-                    <TextField type="number" value={this.state.weight} placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/>
-                    <br></br>
-                    <TextField type="number" value={this.state.sets} placeholder="Total Sets" onChange={this.handleNameChange('sets')}/>
-                    <br></br>
-                    <TextField type="number" value={this.state.reps} placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/>
-                    <br></br>
-                    <TextField type="text" value={this.state.length} placeholder="Duration" onChange={this.handleNameChange('length')}/>
-                    <br></br>
-                    <TextField type="text" value={this.state.details} placeholder="Workout Details" onChange={this.handleNameChange('details')}/>
-                    <br></br>
+                        </TextField><br/>
+                    <TextField type="number" value={this.state.weight} placeholder="Weight in lbs." onChange={this.handleNameChange('weight')}/><br/>
+                    <TextField type="number" value={this.state.sets} placeholder="Total Sets" onChange={this.handleNameChange('sets')}/><br/>                
+                    <TextField type="number" value={this.state.reps} placeholder="Reps Per Set" onChange={this.handleNameChange('reps')}/><br/>                 
+                    <TextField type="text" value={this.state.length} placeholder="Duration" onChange={this.handleNameChange('length')}/><br/>                   
+                    <TextField type="text" value={this.state.details} placeholder="Workout Details" onChange={this.handleNameChange('details')}/><br/><br/>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Workout</Button>
                     <Snackbar
                         anchorOrigin={{
@@ -129,8 +123,7 @@ class AddWorkout extends Component {
                                 >
                                 <CloseIcon />
                                 </IconButton>,
-                        ]}
-                        />
+                        ]}/>
                 </form>
                                  {/* {JSON.stringify(this.props.reduxState.workoutReducer.exerciseReducer)} */}
             </div>
