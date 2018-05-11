@@ -10,6 +10,8 @@ import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
 import Card, {CardContent } from 'material-ui/Card';
 import moment from 'moment';
 import swal from 'sweetalert';
@@ -19,6 +21,19 @@ import swal from 'sweetalert';
 const mapStateToProps = reduxState =>({
     reduxState
 });
+
+const styles = {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justify: 'center',
+        },
+    card: {
+        textAlign: 'center',
+        padding: '10px',
+        margin: '10px'
+        }
+    };
 
 class PastWorkoutItem extends Component {
     constructor(props){
@@ -188,7 +203,8 @@ class PastWorkoutItem extends Component {
             <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></CardContent></Card>)
         // this will render if editMode is not on, and nothing is favorited.
         } else {
-            return(<Card className="workoutCard"><CardContent className="workoutItem"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
+            return(<Grid className="workoutCard"><Grid className="workoutItem"><Paper>
+                <h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
                 <p>Details: {this.props.workout.details}</p>
                 <p>Date: {workoutDate}</p>{this.props.workout.favorite}
@@ -212,7 +228,7 @@ class PastWorkoutItem extends Component {
                             </IconButton>,
                         ]}
                         />
-                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></CardContent></Card>)
+                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></Paper></Grid></Grid>)
                 }
             }
 

@@ -1,12 +1,31 @@
+/* .gridContainer{
+    width: 350px;
+    padding: 10px;
+    margin: 10px;
+    float: left;
+    display: 'flex';
+    flex-wrap: 'wrap';
+} */
+
+/* .gridItem {
+    text-align: center;
+}
+
+.paper{
+    padding: 5px;
+} */
+
+
 .workoutCard{
     width: 350px;
     padding: 10px;
     margin: 10px;
     float: left;
-    /* border: 1px solid black;  */
+    display: 'flex';
+    flex-wrap: 'wrap';
+    margin: auto;
 }
 
 .workoutItem {
-    text-align: center
+    text-align: center;
 }
-

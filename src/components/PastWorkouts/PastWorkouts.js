@@ -3,10 +3,24 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import WorkoutItem from './PastWorkoutItem';
+import { withStyles } from 'material-ui/styles';
+
 
 const mapStateToProps = reduxState =>({
     reduxState
 });
+
+const styles = {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+        },
+    paper: {
+        textAlign: 'center',
+        flexWrap: 'wrap',
+        margin: '10px',
+        }
+    };
 
 class PastWorkouts extends Component {
     constructor(props){
@@ -36,8 +50,7 @@ class PastWorkouts extends Component {
             <div>
                  <Nav />
                  <h2>Past Workouts</h2>
-                 {workoutArray}
-                 {/* {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)} */}
+                 <div style={styles.root} > {workoutArray} </div>
             </div>
         )
     }
