@@ -161,7 +161,7 @@ class PastWorkoutItem extends Component {
             <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
             <p>Details: {this.props.workout.details}</p>
             <p>Date: {workoutDate}</p>{this.props.workout.favorite}
-            <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite />
+            <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite /></Button>
             <Snackbar
                         anchorOrigin={{
                             vertical: 'bottom',
@@ -185,15 +185,14 @@ class PastWorkoutItem extends Component {
                             <CloseIcon />
                             </IconButton>,
                         ]}/>
-            </Button>
-            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></CardContent></Card>)
+            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></CardContent></Card>)
         // this will render if editMode is not on, and nothing is favorited.
         } else {
             return(<Card className="workoutCard"><CardContent className="workoutItem"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
                 <p>Details: {this.props.workout.details}</p>
                 <p>Date: {workoutDate}</p>{this.props.workout.favorite}
-                <Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder />
+                <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder /></Button>
                 <Snackbar
                         anchorOrigin={{
                             vertical: 'bottom', horizontal: 'left',
@@ -212,8 +211,8 @@ class PastWorkoutItem extends Component {
                             ><CloseIcon />
                             </IconButton>,
                         ]}
-                        /></Button>
-                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></CardContent></Card>)
+                        />
+                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></CardContent></Card>)
                 }
             }
 
