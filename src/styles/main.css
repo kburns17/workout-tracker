@@ -1,19 +1,22 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg)  */
-
+ 
 }
 
 .instructions h1 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    text-align: center
+    text-align: center;
+
 }
 
 .instructions {
     background-color: #2196F3;
     padding: 5px;
     color: #110f0f;
+    /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg); */
+    
 }
 
 .form {
@@ -62,6 +65,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+
 }
 
 li {
