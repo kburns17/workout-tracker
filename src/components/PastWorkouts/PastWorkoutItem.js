@@ -30,14 +30,20 @@ const styles = {
         },
     card: {
         margin: 'auto',
+        height: '325px',
+        width: '350px',
+        flexWrap: 'wrap',
+        textAlign: 'center',
+        },
+
+    editCard: {
+        margin: 'auto',
         height: '400px',
         width: '350px',
         flexWrap: 'wrap',
         textAlign: 'center',
         },
-    modal: {
-        textAlign: 'center',
-        }
+    
     };
 
 class PastWorkoutItem extends Component {
@@ -159,7 +165,7 @@ class PastWorkoutItem extends Component {
         if (this.state.editMode) {
             return(
               <Grid style={styles.root} container spacing={24}>
-               <Card style={styles.card} > 
+               <Card style={styles.editCard} > 
                     <h3>Edit Workout</h3>
                         <form onSubmit={this.updateWorkout}>
                             <TextField
