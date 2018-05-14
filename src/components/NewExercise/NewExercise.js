@@ -51,6 +51,7 @@ class NewExercise extends Component {
             <div>
                 <Nav />
                 <h2>Add New Exercise Type</h2>
+                <div className="form">
                 <form onSubmit={this.addNewExercise}>
                     <TextField type="text" value={this.state.exercise} placeholder="New Exercise Type" onChange={this.handleNameChange}></TextField><br/><br/>
                     <Button size="small" variant="raised" color="primary" type="submit">Add New Exercise</Button>
@@ -79,6 +80,7 @@ class NewExercise extends Component {
                         ]}
                         />
                 </form>
+                </div>
             </div>
         )
     }

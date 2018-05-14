@@ -83,6 +83,7 @@ class AddWorkout extends Component {
             <div>
                 <Nav />
                 <h2>Add New Workout</h2>
+                <div className="form">
                 <form onSubmit={this.addWorkout}>
                         <TextField
                                 id="select-exercise"
@@ -125,6 +126,7 @@ class AddWorkout extends Component {
                                 </IconButton>,
                         ]}/>
                 </form>
+                </div>
                                  {/* {JSON.stringify(this.props.reduxState.workoutReducer.exerciseReducer)} */}
             </div>
         )

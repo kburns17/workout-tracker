@@ -20,5 +20,6 @@ CREATE TABLE workouts (
 
 CREATE TABLE exercises (
 "id" serial primary key,
-"exercise" varchar(80)
+"exercise" varchar(80),
+"person_id" INT REFERENCES "person"
 );

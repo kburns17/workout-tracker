@@ -49,7 +49,7 @@ class PastWorkouts extends Component {
         return(
             <div>
                  <Nav />
-                 <h2>Past Workouts</h2>
+                 <h2>My Workouts</h2>
                  <div style={styles.root}>{workoutArray} </div>
             </div>
         )

@@ -65,6 +65,7 @@ class LoginPage extends Component {
     return (
       <div>
         { this.renderAlert() }
+        <div className="form">
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
@@ -99,6 +100,7 @@ class LoginPage extends Component {
             <Link to="/register">Register</Link>
           </div>
         </form>
+        </div>
       </div>
     );
   }

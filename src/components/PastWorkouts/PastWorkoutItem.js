@@ -30,7 +30,7 @@ const styles = {
         },
     card: {
         margin: 'auto',
-        height: '325px',
+        height: '330px',
         width: '350px',
         flexWrap: 'wrap',
         textAlign: 'center',
@@ -38,12 +38,11 @@ const styles = {
 
     editCard: {
         margin: 'auto',
-        height: '400px',
+        height: '330px',
         width: '350px',
         flexWrap: 'wrap',
         textAlign: 'center',
         },
-    
     };
 
 class PastWorkoutItem extends Component {
@@ -166,25 +165,25 @@ class PastWorkoutItem extends Component {
             return(
               <Grid style={styles.root} container spacing={24}>
                <Card style={styles.editCard} > 
-                    <h3>Edit Workout</h3>
-                        <form onSubmit={this.updateWorkout}>
-                            <TextField
-                                    id="select-exercise"
-                                    select
-                                    label="Exercise Type"
-                                    value={this.state.workoutInputs.exercise_id}
-                                    helperText="Please select an exercise" 
-                                    onChange={this.handleChangeWorkout('exercise_id')}>
-                                            {exerciseArray}
-                            </TextField><br/>
-                            <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/><br/>
-                            <TextField  type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}/><br/>                  
-                            <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/><br/>                
-                            <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/><br/>                 
-                            <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/><br/>
-                            <Button size="small" variant="flat" color="primary" type="submit" >Save< Update /></Button>
-                            <Button size="small" variant="flat" color="primary" onClick={this.deleteWorkout}>Remove< Delete /></Button>
-                        </form>
+                <h3>Edit Workout</h3>
+                    <form onSubmit={this.updateWorkout}>
+                        <TextField
+                                id="select-exercise"
+                                select
+                                label="Exercise Type"
+                                value={this.state.workoutInputs.exercise_id}
+                                helperText="Please select an exercise" 
+                                onChange={this.handleChangeWorkout('exercise_id')}>
+                                        {exerciseArray}
+                        </TextField><br/>
+                        <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/><br/>
+                        <TextField  type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}/><br/>                  
+                        <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/><br/>                
+                        <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/><br/>                 
+                        <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/><br/>
+                        <Button size="small" variant="flat" color="primary" type="submit" >Save< Update /></Button>
+                        <Button size="small" variant="flat" color="primary" onClick={this.deleteWorkout}>Remove< Delete /></Button>
+                    </form>
                  </Card>
                 </Grid>
             )

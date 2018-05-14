@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg) */
+    /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg)  */
 
 }
 
@@ -16,8 +16,7 @@ body {
     color: #110f0f;
 }
 
-form {
-    /* background-color: #dbd5d5; */
+.form {
     text-align: center;
     width: 30%;
     height: 250px;
@@ -50,6 +49,7 @@ input[type="submit"] {
 .message:nth-child(even) {
     background-color: #f8f8f8;
 }
+
 
 .navbar {
   background-color: #5066e291;
