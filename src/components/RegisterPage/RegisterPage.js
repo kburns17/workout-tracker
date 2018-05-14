@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+
+
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -77,7 +81,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <TextField
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -88,7 +92,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="password">
               Password:
-              <input
+              <TextField
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -97,11 +101,12 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            <input
+          <br/>
+            <Button size="small" variant="raised" color="primary"
               type="submit"
               name="submit"
               value="Register"
-            />
+            >Register</Button><br/>
             <Link to="/home">Cancel</Link>
           </div>
         </form>

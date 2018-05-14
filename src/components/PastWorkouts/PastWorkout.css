@@ -16,12 +16,9 @@
 
 
 .workoutCard{
-    width: 350px;
-    padding: 10px;
-   
-    /* float: left; */
-    margin: auto;
-    text-align: center;
+    width: 300px;
+    margin: 10px;
+    float: left;
 }
 
 .workoutItem {

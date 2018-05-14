@@ -11,6 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { withStyles } from 'material-ui/styles';
 import Card, {CardContent } from 'material-ui/Card';
+import Grid from 'material-ui/Grid';
 import moment from 'moment';
 import swal from 'sweetalert';
 
@@ -22,15 +23,20 @@ const mapStateToProps = reduxState =>({
 
 const styles = {
     root: {
+      width: '315px',
       display: 'flex',
       flexWrap: 'wrap',
-      justify: 'center',
-      margin: '10px'
+      margin: '20px'
         },
     card: {
+        margin: 'auto',
+        height: '400px',
+        width: '350px',
+        flexWrap: 'wrap',
         textAlign: 'center',
-        padding: '10px',
-        margin: '10px'
+        },
+    modal: {
+        textAlign: 'center',
         }
     };
 
@@ -96,7 +102,8 @@ class PastWorkoutItem extends Component {
     // toggles the render of edit mode on edit button click.
     handleEditClick = (event)=>{
         this.setState({
-            editMode: true
+            editMode: true,
+            open: true,
         })
     }
 
@@ -138,10 +145,8 @@ class PastWorkoutItem extends Component {
         })
     }
     // handles the snackbar close, and resets state OPEN to false
-    handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
+    handleClose = () => {
+        
         this.setState({ open: false });
         };
 
@@ -152,43 +157,59 @@ class PastWorkoutItem extends Component {
         let workoutDate = moment(this.props.workout.date_of_workout).format('MMMM Do YYYY, h:mm a');
         // this will render if you are in editMode
         if (this.state.editMode) {
-            return(<Card className="workoutCard"><CardContent className="workoutItem"><h3>Edit Workout</h3>
-                <form onSubmit={this.updateWorkout}>
-                        <TextField
-                                id="select-exercise"
-                                select
-                                label="Exercise Type"
-                                value={this.state.workoutInputs.exercise_id}
-                                helperText="Please select an exercise" 
-                                onChange={this.handleChangeWorkout('exercise_id')}>
-                                        {exerciseArray}
-                        </TextField><br/>
-                    <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/><br/>
-                    <TextField  type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}/><br/>                  
-                    <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/><br/>                
-                    <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/><br/>                 
-                    <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/><br/>
-                    <Button size="small" variant="flat" color="primary" type="submit" >Save< Update /></Button>
-                    <Button size="small" variant="flat" color="primary" onClick={this.deleteWorkout}>Remove< Delete /></Button>
-                </form></CardContent></Card>)
+            return(
+              <Grid style={styles.root} container spacing={24}>
+               <Card style={styles.card} > 
+                    <h3>Edit Workout</h3>
+                        <form onSubmit={this.updateWorkout}>
+                            <TextField
+                                    id="select-exercise"
+                                    select
+                                    label="Exercise Type"
+                                    value={this.state.workoutInputs.exercise_id}
+                                    helperText="Please select an exercise" 
+                                    onChange={this.handleChangeWorkout('exercise_id')}>
+                                            {exerciseArray}
+                            </TextField><br/>
+                            <TextField  type="number" placeholder={this.state.workoutInputs.weight} onChange={this.handleChangeWorkout('weight')}/><br/>
+                            <TextField  type="number" placeholder={this.state.workoutInputs.sets} onChange={this.handleChangeWorkout('sets')}/><br/>                  
+                            <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/><br/>                
+                            <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/><br/>                 
+                            <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/><br/>
+                            <Button size="small" variant="flat" color="primary" type="submit" >Save< Update /></Button>
+                            <Button size="small" variant="flat" color="primary" onClick={this.deleteWorkout}>Remove< Delete /></Button>
+                        </form>
+                 </Card>
+                </Grid>
+            )
                     
         // this will render if any items are favorited
         } else if(this.state.favorited){
-            return(<Card className="workoutCard"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
-            <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
-            <p>Details: {this.props.workout.details}</p>
-            <p>Date: {workoutDate}</p>
-            <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout} >Favorite< Favorite /></Button>
-            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></Card>)
+            return(
+            <Grid style={styles.root} container spacing={24}>
+                <Card style={styles.card} > 
+                    <h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
+                    <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
+                    <p>Details: {this.props.workout.details}</p>
+                    <p>Date: {workoutDate}</p>
+                    <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout} >Favorite< Favorite /></Button>
+                    <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>
+                </Card>
+            </Grid>)
         // this will render if editMode is not on, and nothing is favorited.
         } else {
-            return(<Card className="workoutCard">
-                <h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
-                <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
-                <p>Details: {this.props.workout.details}</p>
-                <p>Date: {workoutDate}</p>
-                <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder /></Button>
-                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></Card>)
+            return(
+              <Grid style={styles.root} container spacing={24}>
+                <Card style={styles.card}> 
+                    <h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
+                    <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
+                    <p>Details: {this.props.workout.details}</p>
+                    <p>Date: {workoutDate}</p>
+                    <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder /></Button>
+                    <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div>
+                </Card>
+              </Grid>     
+                    )
                 }
             }
 

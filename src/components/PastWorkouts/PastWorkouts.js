@@ -14,15 +14,12 @@ const mapStateToProps = reduxState =>({
 
 const styles = {
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      
-        },
-    paper: {
-        textAlign: 'center',
         flexWrap: 'wrap',
-        margin: '10px',
-        }
+        display: 'flex',
+        margin: 'auto',
+        width: 'auto',
+        justify: 'center',
+        },
     };
 
 class PastWorkouts extends Component {

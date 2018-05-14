@@ -90,12 +90,12 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
+          <br/>
             <Button size="small" variant="raised" color="primary"
               type="submit"
               name="submit"
               value="Log In"
-            >Log In</Button>
-            <br></br>
+            >Log In</Button><br/>
             <Link to="/register">Register</Link>
           </div>
         </form>
