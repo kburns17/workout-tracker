@@ -11,7 +11,7 @@ body {
 }
 
 .instructions {
-    background-color: #5066e291;
+    background-color: #2196F3;
     padding: 5px;
     color: #110f0f;
 }
@@ -52,7 +52,7 @@ input[type="submit"] {
 
 
 .navbar {
-  background-color: #5066e291;
+  background-color: #2196F3;
   width: 100%;
   border-radius: 0px;
 }
