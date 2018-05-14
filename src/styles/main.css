@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg) */
+
 }
 
 .instructions h1 {
@@ -65,6 +66,10 @@ ul {
 
 li {
     float: left;
+}
+
+h2{
+    text-align: center;
 }
 
 li a {

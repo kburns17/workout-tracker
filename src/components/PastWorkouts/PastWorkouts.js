@@ -4,6 +4,8 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import WorkoutItem from './PastWorkoutItem';
 import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid';
+import Card, {CardContent } from 'material-ui/Card';
 
 
 const mapStateToProps = reduxState =>({
@@ -14,6 +16,7 @@ const styles = {
     root: {
       display: 'flex',
       flexWrap: 'wrap',
+      
         },
     paper: {
         textAlign: 'center',
@@ -50,7 +53,7 @@ class PastWorkouts extends Component {
             <div>
                  <Nav />
                  <h2>Past Workouts</h2>
-                 <div style={styles.root} > {workoutArray} </div>
+                 <div style={styles.root}>{workoutArray} </div>
             </div>
         )
     }

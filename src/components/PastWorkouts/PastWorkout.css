@@ -3,8 +3,7 @@
     padding: 10px;
     margin: 10px;
     float: left;
-    display: 'flex';
-    flex-wrap: 'wrap';
+   
 } */
 
 /* .gridItem {
@@ -19,11 +18,10 @@
 .workoutCard{
     width: 350px;
     padding: 10px;
-    margin: 10px;
-    float: left;
-    display: 'flex';
-    flex-wrap: 'wrap';
+   
+    /* float: left; */
     margin: auto;
+    text-align: center;
 }
 
 .workoutItem {

@@ -9,8 +9,6 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Card, {CardContent } from 'material-ui/Card';
 import moment from 'moment';
@@ -27,6 +25,7 @@ const styles = {
       display: 'flex',
       flexWrap: 'wrap',
       justify: 'center',
+      margin: '10px'
         },
     card: {
         textAlign: 'center',
@@ -68,14 +67,17 @@ class PastWorkoutItem extends Component {
     // updates workout in database to new inputs.
     // resets edit state to false to switch render to view workouts only
     updateWorkout = (workout) =>{
-        console.log(this.state.workoutInputs);
-        
-        this.setState({
-            editMode: false, 
-        })
+        swal({
+            title: "Workout Updated",
+            button: true,
+            icon: "success",
+        })        
         this.props.dispatch({
             type: 'UPDATE_WORKOUT',
             payload: this.state.workoutInputs
+        })
+        this.setState({
+            editMode: false, 
         })
     }
 
@@ -166,69 +168,27 @@ class PastWorkoutItem extends Component {
                     <TextField  type="number" placeholder={this.state.workoutInputs.reps} onChange={this.handleChangeWorkout('reps')}/><br/>                
                     <TextField  type="text" placeholder={this.state.workoutInputs.length} onChange={this.handleChangeWorkout('length')}/><br/>                 
                     <TextField  type="text" placeholder={this.state.workoutInputs.details} onChange={this.handleChangeWorkout('details')}/><br/>
-                    <Button size="small" variant="flat" color="primary" type="submit">Save< Update /></Button>
+                    <Button size="small" variant="flat" color="primary" type="submit" >Save< Update /></Button>
                     <Button size="small" variant="flat" color="primary" onClick={this.deleteWorkout}>Remove< Delete /></Button>
                 </form></CardContent></Card>)
                     
         // this will render if any items are favorited
         } else if(this.state.favorited){
-            return(<Card className="workoutCard"><CardContent className="workoutItem"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
+            return(<Card className="workoutCard"><h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
             <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
             <p>Details: {this.props.workout.details}</p>
-            <p>Date: {workoutDate}</p>{this.props.workout.favorite}
-            <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< Favorite /></Button>
-            <Snackbar
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        open={this.state.open}
-                        autoHideDuration={2000}
-                        onClose={this.handleClose}
-                        ContentProps={{
-                            'aria-describedby': 'message-id',
-                        }}
-                        message={<span id="message-id">Added to Favorites</span>}
-                        action={[
-                            <IconButton
-                            key="close"
-                            aria-label="Close"
-                            color="inherit"
-                            // className={classes.close}
-                            onClick={this.handleClose}
-                            >
-                            <CloseIcon />
-                            </IconButton>,
-                        ]}/>
-            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></CardContent></Card>)
+            <p>Date: {workoutDate}</p>
+            <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout} >Favorite< Favorite /></Button>
+            <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></Card>)
         // this will render if editMode is not on, and nothing is favorited.
         } else {
-            return(<Grid className="workoutCard"><Grid className="workoutItem"><Paper>
+            return(<Card className="workoutCard">
                 <h3>{this.props.workout.exercise}</h3><p>Weight: {this.props.workout.weight} lbs</p>
                 <p>Sets: {this.props.workout.sets}</p><p>Reps per set: {this.props.workout.reps}</p><p>Duration: {this.props.workout.length}</p>
                 <p>Details: {this.props.workout.details}</p>
-                <p>Date: {workoutDate}</p>{this.props.workout.favorite}
+                <p>Date: {workoutDate}</p>
                 <div><Button size="small" variant="flat" color="primary" onClick={this.favoriteWorkout}>Favorite< FavoriteBorder /></Button>
-                <Snackbar
-                        anchorOrigin={{
-                            vertical: 'bottom', horizontal: 'left',
-                        }}
-                        open={this.state.open}
-                        autoHideDuration={2000}
-                        onClose={this.handleClose}
-                        ContentProps={{
-                            'aria-describedby': 'message-id',
-                        }}
-                        message={<span id="message-id">Removed from Favorites</span>}
-                        action={[
-                            <IconButton key="close" aria-label="Close" color="inherit"
-                            // className={classes.close}
-                            onClick={this.handleClose}
-                            ><CloseIcon />
-                            </IconButton>,
-                        ]}
-                        />
-                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></Paper></Grid></Grid>)
+                <Button size="small" variant="flat" color="primary" onClick={this.handleEditClick}>Edit< Edit /></Button></div></Card>)
                 }
             }
 
