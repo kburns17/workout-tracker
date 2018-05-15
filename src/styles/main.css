@@ -1,23 +1,21 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg)  */
- 
+    background-size: cover;
+    background-image: url(https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 
 .instructions h1 {
     font-size: 28px;
     font-weight: 700;
     text-align: center;
-
 }
 
-.instructions {
-    background-color: #2196F3;
+/* .instructions {
+    background-size: cover;
+    background-image: url(https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
     padding: 5px;
-    color: #110f0f;
-    /* background-image: url(https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/94/175/506134950_XS.jpg); */
-    
-}
+    color: #110f0f;   
+} */
 
 .form {
     text-align: center;
@@ -54,11 +52,12 @@ input[type="submit"] {
 }
 
 
-.navbar {
-  background-color: #2196F3;
-  width: 100%;
-  border-radius: 0px;
-}
+/* .navbar {
+    background-size: cover;
+    background-image: url(https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    width: 100%;
+    border-radius: 0px;
+} */
 
 ul {
     list-style-type: none;
