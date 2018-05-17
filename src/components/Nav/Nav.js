@@ -30,6 +30,11 @@ const Nav = () => (
             See Past Workouts
           </Link>
         </li>
+        <li>
+          <Link to="/favorites">
+            Favorite Workouts
+          </Link>
+        </li>
       </ul>
     </div>
   </div>

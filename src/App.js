@@ -14,6 +14,7 @@ import UserPage from './components/UserPage/UserPage';
 import AddWorkout from './components/AddWorkout/AddWorkout';
 import PastWorkouts from './components/PastWorkouts/PastWorkouts';
 import NewExercise from './components/NewExercise/NewExercise';
+import Favorites from './components/FavoritesPage/Favorites';
 import './styles/main.css';
 // Styling imports below
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -62,6 +63,10 @@ const App = () => (
         <Route
          path="/newExercise"
          component={NewExercise}
+       />
+        <Route
+         path="/favorites"
+         component={Favorites}
        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
