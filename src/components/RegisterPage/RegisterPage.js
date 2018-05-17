@@ -81,22 +81,26 @@ class RegisterPage extends Component {
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
-              Username:
+              
               <TextField
                 type="text"
                 name="username"
                 value={this.state.username}
+                placeholder="Username"
+
                 onChange={this.handleInputChangeFor('username')}
               />
             </label>
           </div>
           <div>
             <label htmlFor="password">
-              Password:
+             
               <TextField
                 type="password"
                 name="password"
                 value={this.state.password}
+                placeholder="Password"
+
                 onChange={this.handleInputChangeFor('password')}
               />
             </label>
