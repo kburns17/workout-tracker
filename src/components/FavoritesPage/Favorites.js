@@ -21,7 +21,7 @@ class Favorites extends Component {
 
 
     render(){
-        
+
         let workoutArray = this.props.reduxState.workoutReducer.workoutReducer.map((workout)=>{
                 return(<div key={workout.id} workout={workout}></div>)
         });
@@ -29,7 +29,7 @@ class Favorites extends Component {
         return(
             <div>
                 <Nav />
-                <h2>My Favorite Workouts</h2>
+                <h2>Page coming soon</h2>
                 <div>{workoutArray}</div>
                 {/* {JSON.stringify(this.props.reduxState.workoutReducer.workoutReducer)} */}
             </div>

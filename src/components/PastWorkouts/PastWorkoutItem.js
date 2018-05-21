@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './PastWorkout.css';
-import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
 import { Edit, Delete, FavoriteBorder, Favorite, Update } from '@material-ui/icons';
 import MenuItem from 'material-ui/Menu/MenuItem';
@@ -148,7 +147,6 @@ class PastWorkoutItem extends Component {
     }
     // handles the snackbar close, and resets state OPEN to false
     handleClose = () => {
-        
         this.setState({ open: false });
         };
 
