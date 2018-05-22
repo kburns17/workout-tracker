@@ -53,4 +53,4 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-module.exports = pool;
+module.exports = new pg.Pool(config);
