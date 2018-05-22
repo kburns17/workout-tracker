@@ -151,10 +151,13 @@ class PastWorkoutItem extends Component {
         };
 
     render(){
+    //mapping over this array to get exercise type in the drop down for the edit form render.
         let exerciseArray = this.props.reduxState.workoutReducer.exerciseReducer.map((exercise)=>{ 
             return(<MenuItem key={exercise.id} value={exercise.id}>{exercise.exercise}</MenuItem>)
         })
+        // Variable set to format workout date in render
         let workoutDate = moment(this.props.workout.date_of_workout).format('MMMM Do YYYY, h:mm a');
+
         // this will render if you are in editMode
         if (this.state.editMode) {
             return(

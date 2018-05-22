@@ -38,7 +38,7 @@ class NewExercise extends Component {
             open: true
         })
     }
-
+    // handles the closing of the snackbar by resetting state  'OPEN: false'
     handleClose = (event, reason) => {
         if (reason === 'clickaway') {
           return;
@@ -72,7 +72,6 @@ class NewExercise extends Component {
                             key="close"
                             aria-label="Close"
                             color="inherit"
-                            // className={classes.close}
                             onClick={this.handleClose}
                             >
                             <CloseIcon />

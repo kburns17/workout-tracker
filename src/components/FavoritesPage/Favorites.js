@@ -21,7 +21,7 @@ class Favorites extends Component {
 
 
     render(){
-
+        //mapping over this array in order to get workouts
         let workoutArray = this.props.reduxState.workoutReducer.workoutReducer.map((workout)=>{
                 return(<div key={workout.id} workout={workout}></div>)
         });
