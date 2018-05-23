@@ -1,19 +1,20 @@
-*PERSONAL WORKOUT ASSISTANT*
+#PERSONAL WORKOUT ASSISTANT
 This application is meant to be used as a personal workout assistant. The user can add a new workout and its details to the app and view it, along with all the other workouts that have been added. They have the ability to mark a workout as a favorite and update the workout details if entered it incorrectly. An user can also delete a workout from the database if they choose. 
 
 
-*BUILT WITH*
+#BUILT WITH
 React-Redux, Express JS, Node JS, PostgreSQL,Material-UI, Sweetalert, Passport JS, Moment.js
 
-*GETTING STARTED*
+#GETTING STARTED
+To get started install necessary dependencies by running the below:
 
+NPM install 
 
+#PREREQUISITES
+This application will require React, Node JS, Express JS and PostgreSQL to run
 
-*PREREQUISITES*
-This application will require React, Node JS and PostgreSQL to run
-
-*INSTALLING*
-Use the below PostgresQL tables:
+#INSTALLING
+Use the below PostgresQL tables to get started:
 CREATE TABLE person (
     id SERIAL PRIMARY KEY,
     username VARCHAR (80) UNIQUE NOT NULL,

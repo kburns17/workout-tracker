@@ -50,7 +50,7 @@ class PastWorkouts extends Component {
             <div>
                  <Nav />
                  <h2>Past Workouts</h2>
-                 <div style={styles.root}>{workoutArray} </div>
+                 <div style={styles.root}>{workoutArray}</div>
             </div>
         )
     }
